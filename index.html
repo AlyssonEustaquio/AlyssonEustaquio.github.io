@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="ALYSSON" content="width=device-width, initial-scale=1.0">
+    <title>ALYSSON</title>
+    <link href="icon.svg" type="ALYSSON" style="width: 50px; height: 50px; border-radius: 50%;">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao ALYSSON</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Início</h2>
+            <p>Esta é a página inicial do ALYSSON.</p>
+        </section>
+
+        <section id="about">
+            <h2>Sobre</h2>
+            <p>Informações sobre o ALYSSON.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contato</h2>
+            <p>Formulário de contato e informações.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ALYSSON. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        // Exemplo de script para interações dinâmicas
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('ALYSSON está pronto!');
+        });
+        // Função para carregar dados usando Axios
+        function loadData() {
+            axios.get('https://api.example.com/data')
+                .then(response => {
+                    console.log('Dados carregados:', response.data);
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar dados:', error);
+                });
+        }
+        // Chamada da função para carregar dados
+        loadData();
+    </script>
+</body>
+</html>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+main {
+    padding: 20px;
+}
+section {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+h2 {
+    color: #333;
+}
+p {
+    color: #666;
+}
+</style>
+</body>
+</html>
