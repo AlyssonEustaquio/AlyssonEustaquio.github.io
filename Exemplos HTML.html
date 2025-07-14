@@ -56,14 +56,20 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Voltar para a Página Inicial</a>
+                        <a class="nav-link" href="index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="css_examples.html">Exemplos de CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Exemplos HTML.html">Exemplos de HTML</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container my-5">
-        <h1 class="text-center mb-4">Exemplos HTML</h1>
+        <h1 class="text-center mb-4">Portfólio de Exemplos HTML</h1>
         <p class="text-center mb-5">Explore exemplos detalhados de elementos HTML com estilização CSS</p>
 
         <div class="card mb-4">
@@ -83,16 +89,16 @@
                     </footer>
                 </article>
                 <pre>
-&lt;article class="semantic-example"&gt;
-    &lt;header&gt;
-        &lt;h3&gt;Artigo de Exemplo&lt;/h3&gt;
-        &lt;p&gt;Publicado em &lt;time datetime="2025-07-14"&gt;14 de Julho, 2025&lt;/time&gt;&lt;/p&gt;
-    &lt;/header&gt;
-    &lt;p&gt;Este é um artigo fictício...&lt;/p&gt;
-    &lt;footer&gt;
-        &lt;p&gt;Autor: Alysson&lt;/p&gt;
-    &lt;/footer&gt;
-&lt;/article&gt;
+<article class="semantic-example">
+    <header>
+        <h3>Artigo de Exemplo</h3>
+        <p>Publicado em <time datetime="2025-07-14">14 de Julho, 2025</time></p>
+    </header>
+    <p>Este é um artigo fictício...</p>
+    <footer>
+        <p>Autor: Alysson</p>
+    </footer>
+</article>
                 </pre>
             </div>
         </div>
@@ -122,18 +128,18 @@
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
                 <pre>
-&lt;form class="form-example"&gt;
-    &lt;label for="nome"&gt;Nome:&lt;/label&gt;
-    &lt;input type="text" id="nome" name="nome" placeholder="Digite seu nome" required&gt;
-    &lt;label for="email"&gt;Email:&lt;/label&gt;
-    &lt;input type="email" id="email" name="email" placeholder="Digite seu email" required&gt;
-    &lt;label for="tipo"&gt;Tipo de Usuário:&lt;/label&gt;
-    &lt;select id="tipo" name="tipo"&gt;
-        &lt;option value="estudante"&gt;Estudante&lt;/option&gt;
-        &lt;option value="profissional"&gt;Profissional&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
-&lt;/form&gt;
+<form class="form-example">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+    <label for="tipo">Tipo de Usuário:</label>
+    <select id="tipo" name="tipo">
+        <option value="estudante">Estudante</option>
+        <option value="profissional">Profissional</option>
+    </select>
+    <button type="submit">Enviar</button>
+</form>
                 </pre>
             </div>
         </div>
@@ -166,27 +172,27 @@
                     </tbody>
                 </table>
                 <pre>
-&lt;table class="data-table"&gt;
-    &lt;thead&gt;
-        &lt;tr&gt;
-            &lt;th&gt;Nome&lt;/th&gt;
-            &lt;th&gt;Idade&lt;/th&gt;
-            &lt;th&gt;Profissão&lt;/th&gt;
-        &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Alysson&lt;/td&gt;
-            &lt;td&gt;25&lt;/td&gt;
-            &lt;td&gt;Aprendiz&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Afonso&lt;/td&gt;
-            &lt;td&gt;22&lt;/td&gt;
-            &lt;td&gt;Desenvolvedor&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Profissão</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Alysson</td>
+            <td>25</td>
+            <td>Aprendiz</td>
+        </tr>
+        <tr>
+            <td>Afonso</td>
+            <td>22</td>
+            <td>Desenvolvedor</td>
+        </tr>
+    </tbody>
+</table>
                 </pre>
             </div>
         </div>
@@ -198,7 +204,7 @@
             <div class="card-body">
                 <p>Exemplo de incorporação de imagem e vídeo com fallback.</p>
                 <figure class="figure">
-                    <img src="https://www.w3schools.com/html/pic_trulli.jpg" class="figure-img img-fluid rounded" alt="Imagem de Exemplo">
+                    <img src="https://via.placeholder.com/300" class="figure-img img-fluid rounded" alt="Imagem de Exemplo">
                     <figcaption class="figure-caption text-center">Imagem de Exemplo</figcaption>
                 </figure>
                 <video controls class="img-fluid rounded">
@@ -206,14 +212,14 @@
                     Seu navegador não suporta o elemento de vídeo.
                 </video>
                 <pre>
-&lt;figure class="media-example"&gt;
-    &lt;img src="https://www.w3schools.com/html/pic_trulli.jpg" alt="Imagem de Exemplo"&gt;
-    &lt;figcaption&gt;Imagem de Exemplo&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;video controls class="media-example"&gt;
-    &lt;source src="sample-video.mp4" type="video/mp4"&gt;
+<figure class="media-example">
+    <img src="https://via.placeholder.com/300" alt="Imagem de Exemplo">
+    <figcaption>Imagem de Exemplo</figcaption>
+</figure>
+<video controls class="media-example">
+    <source src="sample-video.mp4" type="video/mp4">
     Seu navegador não suporta o elemento de vídeo.
-&lt;/video&gt;
+</video>
                 </pre>
             </div>
         </div>
@@ -230,16 +236,17 @@
                     <a class="nav-link" href="#contato">Contato</a>
                 </nav>
                 <pre>
-&lt;nav class="nav-example"&gt;
-    &lt;ul&gt;
-        &lt;li&gt;&lt;a href="#home"&gt;Início&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#sobre"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#contato"&gt;Contato&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/nav&gt;
+<nav class="nav-example">
+    <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
+</nav>
                 </pre>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
