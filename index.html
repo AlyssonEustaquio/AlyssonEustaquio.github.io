@@ -1,111 +1,200 @@
 <!DOCTYPE html>
-<html lang="br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="ALYSSON" content="width=device-width, initial-scale=1.0">
-    <title>ALYSSON</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Códigos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .tab-button:hover {
+            background-color: #2980b9;
+        }
+        .tab-button.active {
+            background-color: #2c3e50;
+        }
+        .tab-content {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Bem-vindo</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <h1>Portfólio de Códigos</h1>
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('html')">HTML</button>
+            <button class="tab-button" onclick="openTab('css')">CSS</button>
+            <button class="tab-button" onclick="openTab('javascript')">JavaScript</button>
+            <button class="tab-button" onclick="openTab('python')">Python</button>
+            <button class="tab-button" onclick="openTab('markdown')">Markdown</button>
+        </div>
 
-    <main>
-        <section id="home">
-            <h2>Início</h2>
-            <p>Esta é a página inicial do ALYSSON.</p>
-        </section>
+        <div id="html" class="tab-content active">
+            <h2>Exemplo de HTML</h2>
+            <p>Uma página HTML simples com um formulário.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Formulário Simples&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Formulário de Contato&lt;/h1&gt;
+    &lt;form&gt;
+        &lt;label for="nome"&gt;Nome:&lt;/label&gt;
+        &lt;input type="text" id="nome" name="nome"&gt;
+        &lt;label for="email"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email"&gt;
+        &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
 
-        <section id="about">
-            <h2>Sobre</h2>
-            <p>Informações sobre o ALYSSON.</p>
-        </section>
-
-        <section id="contact">
-            <h2>Contato</h2>
-            <p>Formulário de contato e informações.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 ALYSSON. Todos os direitos reservados.</p>
-    </footer>
-    <script>
-        // Exemplo de script para interações dinâmicas
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('ALYSSON está pronto!');
-        });
-        // Função para carregar dados usando Axios
-        function loadData() {
-            axios.get('https://api.example.com/data')
-                .then(response => {
-                    console.log('Dados carregados:', response.data);
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar dados:', error);
-                });
-        }
-        // Chamada da função para carregar dados
-        loadData();
-    </script>
-</body>
-</html>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-header {
-    background-color: #333;
+        <div id="css" class="tab-content">
+            <h2>Exemplo de CSS</h2>
+            <p>Estilização de um botão com hover.</p>
+            <pre><code>.botao {
+    background-color: #3498db;
     color: white;
-    padding: 10px 0;
-    text-align: center;
-}
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-main {
-    padding: 20px;
-}
-section {
-    margin-bottom: 20px;
-    background-color: white;
-    padding: 15px;
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+
+.botao:hover {
+    background-color: #2980b9;
+}</code></pre>
+        </div>
+
+        <div id="javascript" class="tab-content">
+            <h2>Exemplo de JavaScript</h2>
+            <p>Função para alternar tema claro/escuro.</p>
+            <pre><code>function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+        body.style.backgroundColor = '#2d2d2d';
+        body.style.color = '#f4f4f9';
+    } else {
+        body.style.backgroundColor = '#f4f4f9';
+        body.style.color = '#333';
+    }
 }
-h2 {
-    color: #333;
-}
-p {
-    color: #666;
-}
-</style>
+
+const button = document.createElement('button');
+button.textContent = 'Alternar Tema';
+button.onclick = toggleTheme;
+document.body.appendChild(button);</code></pre>
+        </div>
+
+        <div id="python" class="tab-content">
+            <h2>Exemplo de Python</h2>
+            <p>Função para calcular fatorial.</p>
+            <pre><code>def fatorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * fatorial(n - 1)
+
+# Exemplo de uso
+numero = 5
+resultado = fatorial(numero)
+print(f"O fatorial de {numero} é {resultado}")</code></pre>
+        </div>
+
+        <div id="markdown" class="tab-content">
+            <h2>Exemplo de Markdown</h2>
+            <p>Um README para um projeto fictício.</p>
+            <pre><code># Projeto Exemplo
+
+## Descrição
+Este é um projeto fictício para demonstrar um README em Markdown.
+
+## Funcionalidades
+- Interface amigável
+- Suporte multiplataforma
+- Documentação completa
+
+## Instalação
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/exemplo/projeto.git
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Execute o projeto:
+   ```bash
+   npm start
+   ```
+
+## Contribuição
+Contribuições são bem-vindas! Abra um *issue* ou envie um *pull request*.</code></pre>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            const tabs = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            const buttons = document.getElementsByClassName('tab-button');
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>
