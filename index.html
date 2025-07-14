@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="index-body">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="https://via.placeholder.com/40" alt="Logotipo" class="d-inline-block align-text-top rounded-circle">
@@ -59,41 +59,323 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Início</a>
+                        <a class="nav-link active" aria-current="page" href="#inicio">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="css_examples.html">Exemplos de CSS</a>
+                        <a class="nav-link" href="#html-examples">Exemplos de HTML</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Exemplos HTML.html">Exemplos de HTML</a>
+                        <a class="nav-link" href="#css-examples">Exemplos de CSS</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container my-5">
-        <h1 class="text-center mb-4 index-title">Navegação de Exemplos</h1>
-        <p class="text-center mb-5 index-subtitle">Explore exemplos incríveis de HTML e CSS</p>
-        <div class="row justify-content-center">
-            <div class="col-md-5 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <h3 class="card-title">Exemplos de HTML</h3>
-                        <p class="card-text">Descubra elementos HTML com estilização CSS.</p>
-                        <a href="Exemplos HTML.html" class="btn btn-primary">Ir para Exemplos de HTML</a>
-                    </div>
+        <!-- Início Section -->
+        <section id="inicio" class="mb-5">
+            <h1 class="text-center mb-4 index-title">Navegação de Exemplos</h1>
+            <p class="text-center mb-5 index-subtitle">Explore exemplos incríveis de HTML e CSS em um único lugar. Use o menu acima para navegar pelas seções de exemplos.</p>
+        </section>
+
+        <!-- HTML Examples Section -->
+        <section id="html-examples" class="mb-5">
+            <h2 class="text-center mb-4">Portfólio de Exemplos HTML</h2>
+            <p class="text-center mb-5">Explore exemplos detalhados de elementos HTML com estilização CSS</p>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>1. Elementos Semânticos</h3>
+                </div>
+                <div class="card-body">
+                    <p>Exemplo de uso de elementos semânticos para estruturação de conteúdo.</p>
+                    <article class="semantic-example">
+                        <header>
+                            <h4>Artigo de Exemplo</h4>
+                            <p>Publicado em <time datetime="2025-07-14">14 de Julho, 2025</time></p>
+                        </header>
+                        <p>Este é um artigo fictício demonstrando elementos semânticos como article, header, e time.</p>
+                        <footer>
+                            <p>Autor: Alysson</p>
+                        </footer>
+                    </article>
+                    <pre>
+<article class="semantic-example">
+    <header>
+        <h3>Artigo de Exemplo</h3>
+        <p>Publicado em <time datetime="2025-07-14">14 de Julho, 2025</time></p>
+    </header>
+    <p>Este é um artigo fictício...</p>
+    <footer>
+        <p>Autor: Alysson</p>
+    </footer>
+</article>
+                    </pre>
                 </div>
             </div>
-            <div class="col-md-5 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <h3 class="card-title">Exemplos de CSS</h3>
-                        <p class="card-text">Veja demonstrações de propriedades e técnicas de CSS.</p>
-                        <a href="css_examples.html" class="btn btn-primary">Ir para Exemplos de CSS</a>
-                    </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>2. Formulário Interativo</h3>
+                </div>
+                <div class="card-body">
+                    <p>Um formulário com diferentes tipos de entrada para interação do usuário.</p>
+                    <form class="form-example">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo de Usuário:</label>
+                            <select class="form-select" id="tipo" name="tipo">
+                                <option value="estudante">Estudante</option>
+                                <option value="profissional">Profissional</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                    <pre>
+<form class="form-example">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+    <label for="tipo">Tipo de Usuário:</label>
+    <select id="tipo" name="tipo">
+        <option value="estudante">Estudante</option>
+        <option value="profissional">Profissional</option>
+    </select>
+    <button type="submit">Enviar</button>
+</form>
+                    </pre>
                 </div>
             </div>
-        </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>3. Tabela de Dados</h3>
+                </div>
+                <div class="card-body">
+                    <p>Uma tabela estilizada para exibir dados organizados.</p>
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Nome</th>
+                                <th>Idade</th>
+                                <th>Profissão</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Alysson</td>
+                                <td>25</td>
+                                <td>Aprendiz</td>
+                            </tr>
+                            <tr>
+                                <td>Afonso</td>
+                                <td>22</td>
+                                <td>Desenvolvedor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pre>
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Profissão</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Alysson</td>
+            <td>25</td>
+            <td>Aprendiz</td>
+        </tr>
+        <tr>
+            <td>Afonso</td>
+            <td>22</td>
+            <td>Desenvolvedor</td>
+        </tr>
+    </tbody>
+</table>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>4. Elementos Multimídia</h3>
+                </div>
+                <div class="card-body">
+                    <p>Exemplo de incorporação de imagem e vídeo com fallback.</p>
+                    <figure class="figure">
+                        <img src="https://via.placeholder.com/300" class="figure-img img-fluid rounded" alt="Imagem de Exemplo">
+                        <figcaption class="figure-caption text-center">Imagem de Exemplo</figcaption>
+                    </figure>
+                    <video controls class="img-fluid rounded">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                    <pre>
+<figure class="media-example">
+    <img src="https://via.placeholder.com/300" alt="Imagem de Exemplo">
+    <figcaption>Imagem de Exemplo</figcaption>
+</figure>
+<video controls class="media-example">
+    <source src="sample-video.mp4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+</video>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>5. Navegação</h3>
+                </div>
+                <div class="card-body">
+                    <p>Exemplo de menu de navegação horizontal.</p>
+                    <nav class="nav nav-pills justify-content-center">
+                        <a class="nav-link" href="#home">Início</a>
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </nav>
+                    <pre>
+<nav class="nav-example">
+    <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
+</nav>
+                    </pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- CSS Examples Section -->
+        <section id="css-examples" class="mb-5">
+            <h2 class="text-center mb-4">Exemplos de CSS</h2>
+            <p class="text-center mb-5">Demonstrações de várias propriedades e técnicas de CSS</p>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Tipografia</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bold">Texto em Negrito (font-weight: bold)</li>
+                        <li class="list-group-item italic">Texto em Itálico (font-style: italic)</li>
+                        <li class="list-group-item uppercase">Texto em Maiúsculas (text-transform: uppercase)</li>
+                        <li class="list-group-item shadow-text">Texto com Sombra (text-shadow)</li>
+                        <li class="list-group-item line-height">Altura de Linha Aumentada (line-height: 2)</li>
+                        <li class="list-group-item letter-spacing">Espaçamento de Letras Aumentado (letter-spacing: 2px)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Modelo de Caixa</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item padding">Preenchimento (padding: 20px)</li>
+                        <li class="list-group-item margin">Margem (margin: 20px)</li>
+                        <li class="list-group-item border">Borda (border: 3px solid)</li>
+                        <li class="list-group-item border-radius">Raio da Borda (border-radius: 15px)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Layout</h3>
+                </div>
+                <div class="card-body">
+                    <div class="flex-container mb-3">
+                        <div class="flex-item">Item Flex 1</div>
+                        <div class="flex-item">Item Flex 2</div>
+                        <div class="flex-item">Item Flex 3</div>
+                    </div>
+                    <div class="grid-container mb-3">
+                        <div class="grid-item">Item Grid 1</div>
+                        <div class="grid-item">Item Grid 2</div>
+                        <div class="grid-item">Item Grid 3</div>
+                    </div>
+                    <div class="float-left">Flutuar à Esquerda</div>
+                    <div class="float-clear">Conteúdo após Flutuação (clear: both)</div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Cores e Fundos</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-color">Cor de Fundo</li>
+                        <li class="list-group-item text-color">Cor do Texto</li>
+                        <li class="list-group-item gradient">Fundo com Gradiente</li>
+                        <li class="list-group-item opacity">Opacidade (opacity: 0.5)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Animações e Transições</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item hover-effect">Efeito de Passagem do Mouse (mudança de fundo/cor)</li>
+                        <li class="list-group-item scale">Escala ao Passar o Mouse (transform: scale)</li>
+                        <li class="list-group-item bounce">Animação de Salto (keyframes)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Posicionamento</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item relative">Posicionamento Relativo</li>
+                        <li class="list-group-item absolute">Posicionamento Absoluto</li>
+                        <li class="list-group-item fixed">Posicionamento Fixo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Pseudo-elementos</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item first-letter">Primeira Letra Estilizada</li>
+                        <li class="list-group-item before">Conteúdo Antes</li>
+                        <li class="list-group-item after">Conteúdo Depois</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Design Responsivo</h3>
+                </div>
+                <div class="card-body">
+                    <p>Redimensione a janela do navegador para ver os layouts flex e grid se ajustarem para telas menores (media queries).</p>
+                </div>
+            </div>
+        </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
