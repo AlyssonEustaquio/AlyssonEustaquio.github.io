@@ -4,24 +4,24 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: calc(1rem + 0.5vw); /* Base font size scales with viewport */
+    font-size: calc(1rem + 0.5vw);
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    font-size: 1rem; /* Scales with html font-size */
+    font-size: 1rem;
 }
 
 .index-body {
-    background: linear-gradient(135deg, #6b48ff, #00ddeb);
+    background: linear-gradient(135deg, #d2b48c, #f5deb3); /* Light brown to lighter tan */
     min-height: 100vh;
     color: #333;
 }
 
 /* Navbar Customization */
 .custom-navbar {
-    background: linear-gradient(to right, #4b6cb7, #182848);
+    background: linear-gradient(to right, #800000, #4a0000); /* Maroon to darker maroon */
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
     padding: 1rem 0;
 }
@@ -52,9 +52,10 @@ body {
 }
 
 .navbar-nav .nav-link.active {
-    background-color: #ff6f61;
+    background-color: #39ff14; /* Neon green */
     border-radius: 0.5rem;
     font-weight: 600;
+    color: #333;
 }
 
 /* Offset for anchor links */
@@ -76,7 +77,8 @@ section[id] {
     }
 
     .navbar-nav .nav-link.active {
-        background-color: #ff6f61;
+        background-color: #39ff14;
+        color: #333;
     }
 }
 
@@ -91,7 +93,7 @@ section[id] {
 
 .index-subtitle, .section-subtitle {
     font-size: clamp(0.9rem, 2vw, 1.2rem);
-    color: #f0f0f0;
+    color: #fff;
     text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
     animation: fadeInUp 1.2s ease-in-out;
 }
@@ -119,7 +121,7 @@ section[id] {
 }
 
 .card-header {
-    background: linear-gradient(to right, #4b6cb7, #182848);
+    background: linear-gradient(to right, #800000, #4a0000); /* Maroon to darker maroon */
     color: #fff;
     font-weight: 600;
     border-radius: 0.9375rem 0.9375rem 0 0;
@@ -135,12 +137,13 @@ section[id] {
 
 /* Custom Button */
 .custom-btn {
-    background: linear-gradient(to right, #ff6f61, #ffb88c);
+    background: linear-gradient(to right, #39ff14, #2ecc71); /* Neon green to darker green */
     border: none;
     padding: 0.75rem 1.5rem;
     font-weight: 600;
     font-size: clamp(0.8rem, 2vw, 1rem);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #333;
 }
 
 .custom-btn:hover {
@@ -150,12 +153,12 @@ section[id] {
 
 /* Custom Table */
 .custom-table thead {
-    background: linear-gradient(to right, #4b6cb7, #182848);
+    background: linear-gradient(to right, #800000, #4a0000); /* Maroon to darker maroon */
     color: #fff;
 }
 
 .custom-table tbody tr:hover {
-    background-color: #f1f5f9;
+    background-color: #f5deb3; /* Lighter tan */
 }
 
 /* Custom Image and Video */
@@ -179,14 +182,14 @@ section[id] {
 }
 
 .custom-nav .nav-link:hover {
-    background-color: #ff6f61;
-    color: #fff;
+    background-color: #39ff14; /* Neon green */
+    color: #333;
     transform: scale(1.05);
 }
 
 /* Example Styling */
 .example {
-    background-color: #f8fafc;
+    background-color: #f5deb3; /* Lighter tan */
     padding: 0.9375rem;
     border-radius: 0.625rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
@@ -208,7 +211,7 @@ pre {
 
 /* Semantic Elements */
 .semantic-example {
-    background-color: #f8fafc;
+    background-color: #f5deb3; /* Lighter tan */
     padding: 1.25rem;
     border-radius: 0.625rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
@@ -217,7 +220,7 @@ pre {
 
 /* Tooltip Styling */
 .tooltip-inner {
-    background-color: #333;
+    background-color: #800000; /* Maroon */
     color: #fff;
     border-radius: 0.5rem;
     font-size: clamp(0.7rem, 1.5vw, 0.9rem);
@@ -235,7 +238,7 @@ pre {
 }
 
 .demo-font-size p {
-    font-size: 1.25rem; /* Example-specific, but scales with html font-size */
+    font-size: 1.25rem;
 }
 
 .demo-font-weight p {
@@ -256,16 +259,16 @@ pre {
 
 .demo-padding p {
     padding: 1.25rem;
-    background-color: #e0f7fa;
+    background-color: #f5deb3; /* Lighter tan */
 }
 
 .demo-margin p {
     margin: 1.25rem;
-    background-color: #b2ebf2;
+    background-color: #d2b48c; /* Light brown */
 }
 
 .demo-border p {
-    border: 0.1875rem solid #007bff;
+    border: 0.1875rem solid #39ff14; /* Neon green */
 }
 
 .demo-box-shadow p {
@@ -275,14 +278,14 @@ pre {
 
 .demo-display span {
     display: inline-block;
-    background-color: #fce4ec;
+    background-color: #f5deb3; /* Lighter tan */
     padding: 0.3125rem;
 }
 
 .demo-float div {
     float: left;
     width: 6.25rem;
-    background-color: #dcedc8;
+    background-color: #d2b48c; /* Light brown */
     padding: 0.625rem;
 }
 
@@ -291,36 +294,38 @@ pre {
 }
 
 .demo-color p {
-    color: #d81b60;
+    color: #800000; /* Maroon */
 }
 
 .demo-background p {
-    background: linear-gradient(to right, #4fc3f7, #0288d1);
-    color: white;
+    background: linear-gradient(to right, #39ff14, #2ecc71); /* Neon green to darker green */
+    color: #333;
     padding: 0.625rem;
 }
 
 .demo-opacity p {
     opacity: 0.5;
-    background-color: #ab47bc;
+    background-color: #800000; /* Maroon */
     padding: 0.625rem;
+    color: #fff;
 }
 
 .demo-transition div {
-    background-color: #3498db;
+    background-color: #39ff14; /* Neon green */
     padding: 0.625rem;
-    color: white;
+    color: #333;
     transition: background-color 0.3s ease;
 }
 
 .demo-transition div:hover {
-    background-color: #e74c3c;
+    background-color: #800000; /* Maroon */
+    color: #fff;
 }
 
 .demo-animation div {
     width: 6.25rem;
     height: 6.25rem;
-    background-color: #2ecc71;
+    background-color: #39ff14; /* Neon green */
     animation: pulse 2s infinite;
 }
 
@@ -333,8 +338,9 @@ pre {
 .demo-transform div {
     width: 6.25rem;
     height: 6.25rem;
-    background-color: #9b59b6;
+    background-color: #800000; /* Maroon */
     transition: transform 0.5s ease;
+    color: #fff;
 }
 
 .demo-transform div:hover {
@@ -345,7 +351,7 @@ pre {
     position: relative;
     top: 1.25rem;
     left: 1.25rem;
-    background-color: #ffccbc;
+    background-color: #f5deb3; /* Lighter tan */
     padding: 0.625rem;
 }
 
@@ -353,26 +359,27 @@ pre {
     position: absolute;
     top: 1.25rem;
     right: 1.25rem;
-    background-color: #ff8a65;
+    background-color: #d2b48c; /* Light brown */
     padding: 0.625rem;
 }
 
 .demo-z-index div {
     position: absolute;
     padding: 0.625rem;
-    color: white;
+    color: #fff;
 }
 
 .demo-z-index div:nth-child(1) {
     z-index: 2;
-    background-color: #3498db;
+    background-color: #39ff14; /* Neon green */
+    color: #333;
 }
 
 .demo-z-index div:nth-child(2) {
     z-index: 1;
     top: 1.25rem;
     left: 1.25rem;
-    background-color: #e74c3c;
+    background-color: #800000; /* Maroon */
 }
 
 .demo-hover p {
@@ -380,18 +387,18 @@ pre {
 }
 
 .demo-hover p:hover {
-    background-color: #ff5722;
-    color: white;
+    background-color: #39ff14; /* Neon green */
+    color: #333;
 }
 
 .demo-pseudo-elements p::before {
     content: "★ ";
-    color: #fbc02d;
+    color: #39ff14; /* Neon green */
 }
 
 .demo-pseudo-elements p::after {
     content: " ✔";
-    color: #4caf50;
+    color: #39ff14; /* Neon green */
 }
 
 .demo-flex {
@@ -400,9 +407,9 @@ pre {
 }
 
 .demo-flex .flex-item {
-    background-color: #3498db;
+    background-color: #39ff14; /* Neon green */
     padding: 0.625rem;
-    color: white;
+    color: #333;
     text-align: center;
     border-radius: 0.5rem;
     font-size: clamp(0.8rem, 1.8vw, 1rem);
@@ -415,9 +422,9 @@ pre {
 }
 
 .demo-grid .grid-item {
-    background-color: #e74c3c;
+    background-color: #800000; /* Maroon */
     padding: 0.625rem;
-    color: white;
+    color: #fff;
     text-align: center;
     border-radius: 0.5rem;
     font-size: clamp(0.8rem, 1.8vw, 1rem);
@@ -430,7 +437,7 @@ pre {
 /* Responsive Typography Adjustments */
 @media (max-width: 768px) {
     html {
-        font-size: calc(0.9rem + 0.4vw); /* Smaller base font for mobile */
+        font-size: calc(0.9rem + 0.4vw);
     }
 
     .index-title, .section-title {
@@ -469,6 +476,6 @@ pre {
 
 @media (min-width: 992px) {
     html {
-        font-size: calc(1rem + 0.6vw); /* Slightly larger base font for desktop */
+        font-size: calc(1rem + 0.6vw);
     }
 }
