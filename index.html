@@ -42,16 +42,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navegação de Exemplos</title>
+    <title>Exemplos HTML - W3Schools</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="index-body">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="https://via.placeholder.com/40" alt="Logotipo" class="d-inline-block align-text-top rounded-circle">
-                Exemplos Web
+            <a class="navbar-brand" href="#inicio">
+                <i class="fas fa-code me-2"></i> Exemplos Web
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
                 <span class="navbar-toggler-icon"></span>
@@ -73,198 +74,420 @@
     </nav>
     <div class="container my-5">
         <!-- Início Section -->
-        <section id="inicio" class="mb-5">
-            <h1 class="text-center mb-4 index-title">Navegação de Exemplos</h1>
-            <p class="text-center mb-5 index-subtitle">Explore exemplos incríveis de HTML e CSS em um único lugar. Use o menu acima para navegar pelas seções de exemplos.</p>
+        <section id="inicio" class="mb-5 text-center">
+            <h1 class="index-title"><i class="fas fa-laptop-code me-2"></i>Exemplos HTML e CSS</h1>
+            <p class="index-subtitle">Explore exemplos completos de HTML do W3Schools, organizados de forma visual e didática, junto com técnicas de CSS.</p>
         </section>
 
         <!-- HTML Examples Section -->
         <section id="html-examples" class="mb-5">
-            <h2 class="text-center mb-4">Portfólio de Exemplos HTML</h2>
-            <p class="text-center mb-5">Explore exemplos detalhados de elementos HTML com estilização CSS</p>
+            <h2 class="text-center mb-4 section-title"><i class="fab fa-html5 me-2"></i>Exemplos de HTML</h2>
+            <p class="text-center mb-5 section-subtitle">Demonstrações práticas de elementos HTML com explicações resumidas.</p>
 
-            <div class="card mb-4">
+            <!-- Basic Structure -->
+            <h3 class="category-title mb-4">Estrutura Básica</h3>
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
-                    <h3>1. Elementos Semânticos</h3>
+                    <h3><!DOCTYPE html> e Tags Estruturais</h3>
                 </div>
                 <div class="card-body">
-                    <p>Exemplo de uso de elementos semânticos para estruturação de conteúdo.</p>
-                    <article class="semantic-example">
-                        <header>
-                            <h4>Artigo de Exemplo</h4>
-                            <p>Publicado em <time datetime="2025-07-14">14 de Julho, 2025</time></p>
-                        </header>
-                        <p>Este é um artigo fictício demonstrando elementos semânticos como article, header, e time.</p>
-                        <footer>
-                            <p>Autor: Alysson</p>
-                        </footer>
-                    </article>
+                    <p>Define um documento HTML5 e estrutura o conteúdo com <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;title&gt;</code> e <code>&lt;body&gt;</code>.</p>
+                    <div class="example">
+                        <h1>Minha Primeira Página</h1>
+                        <p>Este é um parágrafo na página.</p>
+                    </div>
                     <pre>
-<article class="semantic-example">
-    <header>
-        <h3>Artigo de Exemplo</h3>
-        <p>Publicado em <time datetime="2025-07-14">14 de Julho, 2025</time></p>
-    </header>
-    <p>Este é um artigo fictício...</p>
-    <footer>
-        <p>Autor: Alysson</p>
-    </footer>
-</article>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+    &lt;title&gt;Minha Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Minha Primeira Página&lt;/h1&gt;
+    &lt;p&gt;Este é um parágrafo na página.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
                     </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <!-- Text Formatting -->
+            <h3 class="category-title mb-4">Formatação de Texto</h3>
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
-                    <h3>2. Formulário Interativo</h3>
+                    <h3>Parágrafos e Quebras de Linha</h3>
                 </div>
                 <div class="card-body">
-                    <p>Um formulário com diferentes tipos de entrada para interação do usuário.</p>
-                    <form class="form-example">
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome:</label>
-                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="tipo" class="form-label">Tipo de Usuário:</label>
-                            <select class="form-select" id="tipo" name="tipo">
-                                <option value="estudante">Estudante</option>
-                                <option value="profissional">Profissional</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                    </form>
+                    <p>Usa <code>&lt;p&gt;</code> para parágrafos e <code>&lt;br&gt;</code> para quebras de linha.</p>
+                    <div class="example">
+                        <p>Este é um parágrafo.<br>Esta é uma nova linha no mesmo parágrafo.</p>
+                    </div>
                     <pre>
-<form class="form-example">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="Digite seu email" required>
-    <label for="tipo">Tipo de Usuário:</label>
-    <select id="tipo" name="tipo">
-        <option value="estudante">Estudante</option>
-        <option value="profissional">Profissional</option>
-    </select>
-    <button type="submit">Enviar</button>
-</form>
+&lt;p&gt;Este é um parágrafo.&lt;br&gt;Esta é uma nova linha no mesmo parágrafo.&lt;/p&gt;
                     </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_paragraphs" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Negrito e Ênfase</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;b&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;em&gt;</code> para negrito e itálico.</p>
+                    <div class="example">
+                        <p><b>Negrito</b> com &lt;b&gt;, <strong>forte</strong> com &lt;strong&gt;, <i>itálico</i> com &lt;i&gt;, <em>ênfase</em> com &lt;em&gt;.</p>
+                    </div>
+                    <pre>
+&lt;p&gt;&lt;b&gt;Negrito&lt;/b&gt; com &lt;b&gt;, &lt;strong&gt;forte&lt;/strong&gt; com &lt;strong&gt;, &lt;i&gt;itálico&lt;/i&gt; com &lt;i&gt;, &lt;em&gt;ênfase&lt;/em&gt; com &lt;em&gt;.&lt;/p&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_b" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Outros Formatos de Texto</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;small&gt;</code>, <code>&lt;mark&gt;</code>, <code>&lt;del&gt;</code>, <code>&lt;ins&gt;</code>, <code>&lt;sub&gt;</code>, <code>&lt;sup&gt;</code> para formatações específicas.</p>
+                    <div class="example">
+                        <p><small>Texto pequeno</small>, <mark>destacado</mark>, <del>excluído</del>, <ins>inserido</ins>, H<sub>2</sub>O, x<sup>2</sup>.</p>
+                    </div>
+                    <pre>
+&lt;p&gt;&lt;small&gt;Texto pequeno&lt;/small&gt;, &lt;mark&gt;destacado&lt;/mark&gt;, &lt;del&gt;excluído&lt;/del&gt;, &lt;ins&gt;inserido&lt;/ins&gt;, H&lt;sub&gt;2&lt;/sub&gt;O, x&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_small" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Citações e Direção de Texto</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;q&gt;</code>, <code>&lt;blockquote&gt;</code>, <code>&lt;cite&gt;</code>, <code>&lt;bdo&gt;</code> para citações e direção de texto.</p>
+                    <div class="example">
+                        <p><q>Citação curta</q>, <blockquote>Citação longa de um autor.</blockquote><cite>Autor</cite>, <bdo dir="rtl">Texto invertido</bdo>.</p>
+                    </div>
+                    <pre>
+&lt;p&gt;&lt;q&gt;Citação curta&lt;/q&gt;, &lt;blockquote&gt;Citação longa de um autor.&lt;/blockquote&gt;&lt;cite&gt;Autor&lt;/cite&gt;, &lt;bdo dir="rtl"&gt;Texto invertido&lt;/bdo&gt;.&lt;/p&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_q" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Abreviações e Endereços</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;abbr&gt;</code> para abreviações e <code>&lt;address&gt;</code> para informações de contato.</p>
+                    <div class="example">
+                        <p>A <abbr title="Organização das Nações Unidas">ONU</abbr> é uma organização global.<br>
+                        <address>Rua Exemplo, 123, SP, Brasil</address></p>
+                    </div>
+                    <pre>
+&lt;p&gt;A &lt;abbr title="Organização das Nações Unidas"&gt;ONU&lt;/abbr&gt; é uma organização global.&lt;br&gt;
+&lt;address&gt;Rua Exemplo, 123, SP, Brasil&lt;/address&gt;&lt;/p&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_abbr" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <!-- Code Formatting -->
+            <h3 class="category-title mb-4">Formatação de Código</h3>
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
-                    <h3>3. Tabela de Dados</h3>
+                    <h3>Código e Entrada de Teclado</h3>
                 </div>
                 <div class="card-body">
-                    <p>Uma tabela estilizada para exibir dados organizados.</p>
-                    <table class="table table-bordered table-hover">
-                        <thead class="table-primary">
-                            <tr>
-                                <th>Nome</th>
-                                <th>Idade</th>
-                                <th>Profissão</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Alysson</td>
-                                <td>25</td>
-                                <td>Aprendiz</td>
-                            </tr>
-                            <tr>
-                                <td>Afonso</td>
-                                <td>22</td>
-                                <td>Desenvolvedor</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p>Usa <code>&lt;code&gt;</code>, <code>&lt;kbd&gt;</code>, <code>&lt;samp&gt;</code>, <code>&lt;var&gt;</code>, <code>&lt;pre&gt;</code> para código e entrada.</p>
+                    <div class="example">
+                        <p>Comando: <kbd>Ctrl + S</kbd>, código: <code>x = 10;</code>, saída: <samp>Erro 404</samp>, variável: <var>x</var>.</p>
+                        <pre>Texto pré-formatado com &lt;pre&gt;.</pre>
+                    </div>
                     <pre>
-<table class="data-table">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>Profissão</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Alysson</td>
-            <td>25</td>
-            <td>Aprendiz</td>
-        </tr>
-        <tr>
-            <td>Afonso</td>
-            <td>22</td>
-            <td>Desenvolvedor</td>
-        </tr>
-    </tbody>
-</table>
+&lt;p&gt;Comando: &lt;kbd&gt;Ctrl + S&lt;/kbd&gt;, código: &lt;code&gt;x = 10;&lt;/code&gt;, saída: &lt;samp&gt;Erro 404&lt;/samp&gt;, variável: &lt;var&gt;x&lt;/var&gt;.&lt;/p&gt;
+&lt;pre&gt;Texto pré-formatado com &lt;pre&gt;.&lt;/pre&gt;
                     </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_code" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <!-- Forms -->
+            <h3 class="category-title mb-4">Formulários</h3>
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
-                    <h3>4. Elementos Multimídia</h3>
+                    <h3>Campos de Entrada</h3>
                 </div>
                 <div class="card-body">
-                    <p>Exemplo de incorporação de imagem e vídeo com fallback.</p>
-                    <figure class="figure">
-                        <img src="https://via.placeholder.com/300" class="figure-img img-fluid rounded" alt="Imagem de Exemplo">
-                        <figcaption class="figure-caption text-center">Imagem de Exemplo</figcaption>
-                    </figure>
-                    <video controls class="img-fluid rounded">
-                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                        Seu navegador não suporta o elemento de vídeo.
-                    </video>
+                    <p>Usa <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;button&gt;</code> para criar formulários.</p>
+                    <div class="example">
+                        <form class="form-example">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome:</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensagem" class="form-label">Mensagem:</label>
+                                <textarea class="form-control" id="mensagem" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary custom-btn">Enviar</button>
+                        </form>
+                    </div>
                     <pre>
-<figure class="media-example">
-    <img src="https://via.placeholder.com/300" alt="Imagem de Exemplo">
-    <figcaption>Imagem de Exemplo</figcaption>
-</figure>
-<video controls class="media-example">
-    <source src="sample-video.mp4" type="video/mp4">
-    Seu navegador não suporta o elemento de vídeo.
-</video>
+&lt;form&gt;
+    &lt;label for="nome"&gt;Nome:&lt;/label&gt;
+    &lt;input type="text" id="nome" placeholder="Digite seu nome"&gt;
+    &lt;label for="mensagem"&gt;Mensagem:&lt;/label&gt;
+    &lt;textarea id="mensagem" rows="3"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
                     </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Lista Suspensa e Datalist</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;select&gt;</code> e <code>&lt;datalist&gt;</code> para opções de seleção.</p>
+                    <div class="example">
+                        <select class="form-select mb-3">
+                            <option>Opção 1</option>
+                            <option>Opção 2</option>
+                        </select>
+                        <input class="form-control" list="sugestoes">
+                        <datalist id="sugestoes">
+                            <option value="Sugestão 1">
+                            <option value="Sugestão 2">
+                        </datalist>
+                    </div>
+                    <pre>
+&lt;select&gt;
+    &lt;option&gt;Opção 1&lt;/option&gt;
+    &lt;option&gt;Opção 2&lt;/option&gt;
+&lt;/select&gt;
+&lt;input list="sugestoes"&gt;
+&lt;datalist id="sugestoes"&gt;
+    &lt;option value="Sugestão 1"&gt;
+    &lt;option value="Sugestão 2"&gt;
+&lt;/datalist&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_select" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Saída de Formulário</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;output&gt;</code> para exibir resultados de cálculos.</p>
+                    <div class="example">
+                        <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+                            <input type="number" id="a" value="50"> + 
+                            <input type="number" id="b" value="50"> = 
+                            <output name="x" for="a b">100</output>
+                        </form>
+                    </div>
+                    <pre>
+&lt;form oninput="x.value=parseInt(a.value)+parseInt(b.value)"&gt;
+    &lt;input type="number" id="a" value="50"&gt; + 
+    &lt;input type="number" id="b" value="50"&gt; = 
+    &lt;output name="x" for="a b"&gt;100&lt;/output&gt;
+&lt;/form&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_output" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <!-- Structural Elements -->
+            <h3 class="category-title mb-4">Elementos Estruturais</h3>
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
-                    <h3>5. Navegação</h3>
+                    <h3>Artigo e Cabeçalho</h3>
                 </div>
                 <div class="card-body">
-                    <p>Exemplo de menu de navegação horizontal.</p>
-                    <nav class="nav nav-pills justify-content-center">
-                        <a class="nav-link" href="#home">Início</a>
-                        <a class="nav-link" href="#sobre">Sobre</a>
-                        <a class="nav-link" href="#contato">Contato</a>
-                    </nav>
+                    <p>Usa <code>&lt;article&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code> para estrutura semântica.</p>
+                    <div class="example semantic-example">
+                        <article>
+                            <header>
+                                <h4>Artigo Exemplo</h4>
+                                <p>Por Alysson, 14 de Julho de 2025</p>
+                            </header>
+                            <p>Conteúdo do artigo.</p>
+                            <footer>Contato: exemplo@email.com</footer>
+                        </article>
+                    </div>
                     <pre>
-<nav class="nav-example">
-    <ul>
-        <li><a href="#home">Início</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#contato">Contato</a></li>
-    </ul>
-</nav>
+&lt;article&gt;
+    &lt;header&gt;
+        &lt;h4&gt;Artigo Exemplo&lt;/h4&gt;
+        &lt;p&gt;Por Alysson, 14 de Julho de 2025&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;p&gt;Conteúdo do artigo.&lt;/p&gt;
+    &lt;footer&gt;Contato: exemplo@email.com&lt;/footer&gt;
+&lt;/article&gt;
                     </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_article" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Navegação</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;nav&gt;</code> para menus de navegação.</p>
+                    <div class="example">
+                        <nav class="nav nav-pills justify-content-center custom-nav">
+                            <a class="nav-link" href="#">Início</a>
+                            <a class="nav-link" href="#">Sobre</a>
+                            <a class="nav-link" href="#">Contato</a>
+                        </nav>
+                    </div>
+                    <pre>
+&lt;nav&gt;
+    &lt;a href="#"&gt;Início&lt;/a&gt;
+    &lt;a href="#"&gt;Sobre&lt;/a&gt;
+    &lt;a href="#"&gt;Contato&lt;/a&gt;
+&lt;/nav&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_nav" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+
+            <!-- Multimedia -->
+            <h3 class="category-title mb-4">Multimídia</h3>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Imagem e Figura</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;img&gt;</code> e <code>&lt;figure&gt;</code> para imagens com legendas.</p>
+                    <div class="example">
+                        <figure class="figure">
+                            <img src="https://via.placeholder.com/300" class="figure-img img-fluid rounded custom-img" alt="Imagem de Exemplo">
+                            <figcaption class="figure-caption">Imagem com legenda.</figcaption>
+                        </figure>
+                    </div>
+                    <pre>
+&lt;figure&gt;
+    &lt;img src="https://via.placeholder.com/300" alt="Imagem de Exemplo"&gt;
+    &lt;figcaption&gt;Imagem com legenda.&lt;/figcaption&gt;
+&lt;/figure&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_img" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Vídeo</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;video&gt;</code> para incorporar vídeos.</p>
+                    <div class="example">
+                        <video controls class="img-fluid rounded custom-video">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos.
+                        </video>
+                    </div>
+                    <pre>
+&lt;video controls&gt;
+    &lt;source src="mov_bbb.mp4" type="video/mp4"&gt;
+    Seu navegador não suporta vídeos.
+&lt;/video&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_video" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+
+            <!-- Tables -->
+            <h3 class="category-title mb-4">Tabelas</h3>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Tabela de Dados</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> para organizar dados.</p>
+                    <div class="example">
+                        <table class="table table-bordered table-hover custom-table">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Idade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Alysson</td>
+                                    <td>25</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Nome&lt;/th&gt;
+            &lt;th&gt;Idade&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Alysson&lt;/td&gt;
+            &lt;td&gt;25&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+
+            <!-- Links and Metadata -->
+            <h3 class="category-title mb-4">Links e Metadados</h3>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Links</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;a&gt;</code> para criar hiperlinks, com atributo <span data-bs-toggle="tooltip" title="Especifica o URL de destino">href</span>.</p>
+                    <div class="example">
+                        <a href="https://www.w3schools.com" target="_blank">Visite W3Schools</a>
+                    </div>
+                    <pre>
+&lt;a href="https://www.w3schools.com"&gt;Visite W3Schools&lt;/a&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+                </div>
+            </div>
+            <div class="card mb-4 animate-card">
+                <div class="card-header">
+                    <h3>Metadados</h3>
+                </div>
+                <div class="card-body">
+                    <p>Usa <code>&lt;meta&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;base&gt;</code> para informações do documento.</p>
+                    <div class="example">
+                        <p>Metadados estão no <code>&lt;head&gt;</code> e não são visíveis.</p>
+                    </div>
+                    <pre>
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+    &lt;base href="https://www.w3schools.com/"&gt;
+&lt;/head&gt;
+                    </pre>
+                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_head_meta" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
                 </div>
             </div>
         </section>
 
-        <!-- CSS Examples Section -->
+        <!-- CSS Examples Section (Unchanged from Previous Artifact) -->
         <section id="css-examples" class="mb-5">
-            <h2 class="text-center mb-4">Exemplos de CSS</h2>
-            <p class="text-center mb-5">Demonstrações de várias propriedades e técnicas de CSS</p>
+            <h2 class="text-center mb-4 section-title"><i class="fab fa-css3-alt me-2"></i>Exemplos de CSS</h2>
+            <p class="text-center mb-5 section-subtitle">Demonstrações de várias propriedades e técnicas de CSS</p>
 
-            <div class="card mb-4">
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
                     <h3>Tipografia</h3>
                 </div>
@@ -280,7 +503,7 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
                     <h3>Modelo de Caixa</h3>
                 </div>
@@ -294,7 +517,7 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
                     <h3>Layout</h3>
                 </div>
@@ -314,7 +537,7 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
                     <h3>Cores e Fundos</h3>
                 </div>
@@ -328,7 +551,7 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
                     <h3>Animações e Transições</h3>
                 </div>
@@ -341,7 +564,7 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
                     <h3>Posicionamento</h3>
                 </div>
@@ -354,7 +577,7 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
                     <h3>Pseudo-elementos</h3>
                 </div>
@@ -367,7 +590,7 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4 animate-card">
                 <div class="card-header">
                     <h3>Design Responsivo</h3>
                 </div>
@@ -378,5 +601,10 @@
         </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Initialize Bootstrap tooltips
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    </script>
 </body>
 </html>
