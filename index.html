@@ -1,200 +1,212 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Códigos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-        }
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .tab-button {
-            padding: 10px 20px;
-            margin: 0 5px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .tab-button:hover {
-            background-color: #2980b9;
-        }
-        .tab-button.active {
-            background-color: #2c3e50;
-        }
-        .tab-content {
-            display: none;
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .tab-content.active {
-            display: block;
-        }
-        pre {
-            background-color: #2d2d2d;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        code {
-            font-family: 'Courier New', Courier, monospace;
-        }
-    </style>
+    <title>Portfólio de Exemplos HTML</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Portfólio de Códigos</h1>
-        <div class="tabs">
-            <button class="tab-button active" onclick="openTab('html')">HTML</button>
-            <button class="tab-button" onclick="openTab('css')">CSS</button>
-            <button class="tab-button" onclick="openTab('javascript')">JavaScript</button>
-            <button class="tab-button" onclick="openTab('python')">Python</button>
-            <button class="tab-button" onclick="openTab('markdown')">Markdown</button>
-        </div>
+        <header>
+            <h1>Portfólio de Exemplos HTML</h1>
+            <p>Explore exemplos detalhados de elementos HTML com estilização CSS</p>
+        </header>
 
-        <div id="html" class="tab-content active">
-            <h2>Exemplo de HTML</h2>
-            <p>Uma página HTML simples com um formulário.</p>
-            <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="pt-BR"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Formulário Simples&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Formulário de Contato&lt;/h1&gt;
-    &lt;form&gt;
-        &lt;label for="nome"&gt;Nome:&lt;/label&gt;
-        &lt;input type="text" id="nome" name="nome"&gt;
-        &lt;label for="email"&gt;Email:&lt;/label&gt;
-        &lt;input type="email" id="email" name="email"&gt;
-        &lt;button type="submit"&gt;Enviar&lt;/button&gt;
-    &lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-        </div>
+        <!-- Exemplo 1: Elementos Semânticos -->
+        <section>
+            <h2>1. Elementos Semânticos</h2>
+            <p>Exemplo de uso de elementos semânticos para estruturação de conteúdo.</p>
+            <article class="semantic-example">
+                <header>
+                    <h3>Artigo de Exemplo</h3>
+                    <p>Publicado em <time datetime="2025-07-14">14 de Julho, 2025</time></p>
+                </header>
+                <p>Este é um artigo fictício demonstrando elementos semânticos como <code>article</code>, <code>header</code>, e <code>time</code>.</p>
+                <footer>
+                    <p>Autor: João Silva</p>
+                </footer>
+            </article>
+            <pre>
+&lt;article class="semantic-example"&gt;
+    &lt;header&gt;
+        &lt;h3&gt;Artigo de Exemplo&lt;/h3&gt;
+        &lt;p&gt;Publicado em &lt;time datetime="2025-07-14"&gt;14 de Julho, 2025&lt;/time&gt;&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;p&gt;Este é um artigo fictício...&lt;/p&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Autor: João Silva&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;
+            </pre>
+        </section>
 
-        <div id="css" class="tab-content">
-            <h2>Exemplo de CSS</h2>
-            <p>Estilização de um botão com hover.</p>
-            <pre><code>.botao {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        <!-- Exemplo 2: Formulário -->
+        <section>
+            <h2>2. Formulário Interativo</h2>
+            <p>Um formulário com diferentes tipos de entrada para interação do usuário.</p>
+            <form class="form-example">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+                <label for="tipo">Tipo de Usuário:</label>
+                <select id="tipo" name="tipo">
+                    <option value="estudante">Estudante</option>
+                    <option value="profissional">Profissional</option>
+                </select>
+                <button type="submit">Enviar</button>
+            </form>
+            <pre>
+&lt;form class="form-example"&gt;
+    &lt;label for="nome"&gt;Nome:&lt;/label&gt;
+    &lt;input type="text" id="nome" name="nome" placeholder="Digite seu nome" required&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" placeholder="Digite seu email" required&gt;
+    &lt;label for="tipo"&gt;Tipo de Usuário:&lt;/label&gt;
+    &lt;select id="tipo" name="tipo"&gt;
+        &lt;option value="estudante"&gt;Estudante&lt;/option&gt;
+        &lt;option value="profissional"&gt;Profissional&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+            </pre>
+        </section>
 
-.botao:hover {
-    background-color: #2980b9;
-}</code></pre>
-        </div>
+        <!-- Exemplo 3: Tabela -->
+        <section>
+            <h2>3. Tabela de Dados</h2>
+            <p>Uma tabela estilizada para exibir dados organizados.</p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Profissão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ana</td>
+                        <td>25</td>
+                        <td>Designer</td>
+                    </tr>
+                    <tr>
+                        <td>Carlos</td>
+                        <td>30</td>
+                        <td>Desenvolvedor</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre>
+&lt;table class="data-table"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Nome&lt;/th&gt;
+            &lt;th&gt;Idade&lt;/th&gt;
+            &lt;th&gt;Profissão&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Ana&lt;/td&gt;
+            &lt;td&gt;25&lt;/td&gt;
+            &lt;td&gt;Designer&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Carlos&lt;/td&gt;
+            &lt;td&gt;30&lt;/td&gt;
+            &lt;td&gt;Desenvolvedor&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+            </pre>
+        </section>
 
-        <div id="javascript" class="tab-content">
-            <h2>Exemplo de JavaScript</h2>
-            <p>Função para alternar tema claro/escuro.</p>
-            <pre><code>function toggleTheme() {
-    const body = document.body;
-    body.classList.toggle('dark-mode');
-    if (body.classList.contains('dark-mode')) {
-        body.style.backgroundColor = '#2d2d2d';
-        body.style.color = '#f4f4f9';
-    } else {
-        body.style.backgroundColor = '#f4f4f9';
-        body.style.color = '#333';
-    }
-}
+        <!-- Exemplo 4: Elementos Multimídia -->
+        <section>
+            <h2>4. Elementos Multimídia</h2>
+            <p>Exemplo de incorporação de imagem e vídeo com fallback.</p>
+            <figure class="media-example">
+                <img src="https://via.placeholder.com/300" alt="Imagem de Exemplo">
+                <figcaption>Imagem de Exemplo</figcaption>
+            </figure>
+            <video controls class="media-example">
+                <source src="sample-video.mp4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+            <pre>
+&lt;figure class="media-example"&gt;
+    &lt;img src="https://via.placeholder.com/300" alt="Imagem de Exemplo"&gt;
+    &lt;figcaption&gt;Imagem de Exemplo&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;video controls class="media-example"&gt;
+    &lt;source src="sample-video.mp4" type="video/mp4"&gt;
+    Seu navegador não suporta o elemento de vídeo.
+&lt;/video&gt;
+            </pre>
+        </section>
 
-const button = document.createElement('button');
-button.textContent = 'Alternar Tema';
-button.onclick = toggleTheme;
-document.body.appendChild(button);</code></pre>
-        </div>
-
-        <div id="python" class="tab-content">
-            <h2>Exemplo de Python</h2>
-            <p>Função para calcular fatorial.</p>
-            <pre><code>def fatorial(n):
-    if n == 0 or n == 1:
-        return 1
-    else:
-        return n * fatorial(n - 1)
-
-# Exemplo de uso
-numero = 5
-resultado = fatorial(numero)
-print(f"O fatorial de {numero} é {resultado}")</code></pre>
-        </div>
-
-        <div id="markdown" class="tab-content">
-            <h2>Exemplo de Markdown</h2>
-            <p>Um README para um projeto fictício.</p>
-            <pre><code># Projeto Exemplo
-
-## Descrição
-Este é um projeto fictício para demonstrar um README em Markdown.
-
-## Funcionalidades
-- Interface amigável
-- Suporte multiplataforma
-- Documentação completa
-
-## Instalação
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/exemplo/projeto.git
-   ```
-2. Instale as dependências:
-   ```bash
-   npm install
-   ```
-3. Execute o projeto:
-   ```bash
-   npm start
-   ```
-
-## Contribuição
-Contribuições são bem-vindas! Abra um *issue* ou envie um *pull request*.</code></pre>
-        </div>
+        <!-- Exemplo 5: Navegação -->
+        <section>
+            <h2>5. Navegação</h2>
+            <p>Exemplo de menu de navegação horizontal.</p>
+            <nav class="nav-example">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <pre>
+&lt;nav class="nav-example"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#sobre"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#contato"&gt;Contato&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+            </pre>
+        </section>
     </div>
-
-    <script>
-        function openTab(tabName) {
-            const tabs = document.getElementsByClassName('tab-content');
-            for (let i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove('active');
-            }
-            const buttons = document.getElementsByClassName('tab-button');
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove('active');
-            }
-            document.getElementById(tabName).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
-    </script>
 </body>
 </html>
