@@ -1,3 +1,4 @@
+#!/bin/bash
 git add .
-git commit -m "$(date)"
+git commit -m "Atualização automática: $(date)"
 git push origin main
