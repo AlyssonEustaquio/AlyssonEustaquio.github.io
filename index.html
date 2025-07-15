@@ -1,1023 +1,282 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplos HTML e CSS - W3Schools</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Resumo W3Schools - HTML, CSS e JavaScript</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body class="index-body">
-    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#inicio">
-                <i class="fas fa-code me-2"></i> Exemplos Web
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#inicio">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#html-examples">Exemplos de HTML</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#css-examples">Exemplos de CSS</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container my-5">
-        <!-- Início Section -->
-        <section id="inicio" class="mb-5 text-center">
-            <h1 class="index-title"><i class="fas fa-laptop-code me-2"></i>Exemplos HTML e CSS</h1>
-            <p class="index-subtitle">Explore exemplos completos de HTML e CSS do W3Schools, organizados de forma visual e didática.</p>
-        </section>
-
-        <!-- HTML Examples Section (Unchanged from Previous Artifact) -->
-        <section id="html-examples" class="mb-5">
-            <h2 class="text-center mb-4 section-title"><i class="fab fa-html5 me-2"></i>Exemplos de HTML</h2>
-            <p class="text-center mb-5 section-subtitle">Demonstrações práticas de elementos HTML com explicações resumidas.</p>
-
-            <!-- Basic Structure -->
-            <h3 class="category-title mb-4">Estrutura Básica</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3><!DOCTYPE html> e Tags Estruturais</h3>
-                </div>
-                <div class="card-body">
-                    <p>Define um documento HTML5 e estrutura o conteúdo com <code><html></code>, <code><head></code>, <code><title></code> e <code><body></code>.</p>
-                    <div class="example">
-                        <h1>Minha Primeira Página</h1>
-                        <p>Este é um parágrafo na página.</p>
-                    </div>
-                    <pre>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <title>Minha Página</title>
 </head>
 <body>
-    <h1>Minha Primeira Página</h1>
-    <p>Este é um parágrafo na página.</p>
-</body>
-</html>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Text Formatting -->
-            <h3 class="category-title mb-4">Formatação de Texto</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Parágrafos e Quebras de Linha</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><p></code> para parágrafos e <code><br></code> para quebras de linha.</p>
-                    <div class="example">
-                        <p>Este é um parágrafo.<br>Esta é uma nova linha no mesmo parágrafo.</p>
-                    </div>
-                    <pre>
-<p>Este é um parágrafo.<br>Esta é uma nova linha no mesmo parágrafo.</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_paragraphs" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Negrito e Ênfase</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><b></code>, <code><strong></code>, <code><i></code>, <code><em></code> para negrito e itálico.</p>
-                    <div class="example">
-                        <p><b>Negrito</b> com <b>, <strong>forte</strong> com <strong>, <i>itálico</i> com <i>, <em>ênfase</em> com <em>.</p>
-                    </div>
-                    <pre>
-<p><b>Negrito</b> com <b>, <strong>forte</strong> com <strong>, <i>itálico</i> com <i>, <em>ênfase</em> com <em>.</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_b" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Outros Formatos de Texto</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><small></code>, <code><mark></code>, <code><del></code>, <code><ins></code>, <code><sub></code>, <code><sup></code> para formatações específicas.</p>
-                    <div class="example">
-                        <p><small>Texto pequeno</small>, <mark>destacado</mark>, <del>excluído</del>, <ins>inserido</ins>, H<sub>2</sub>O, x<sup>2</sup>.</p>
-                    </div>
-                    <pre>
-<p><small>Texto pequeno</small>, <mark>destacado</mark>, <del>excluído</del>, <ins>inserido</ins>, H<sub>2</sub>O, x<sup>2</sup>.</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_small" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Citações e Direção de Texto</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><q></code>, <code><blockquote></code>, <code><cite></code>, <code><bdo></code> para citações e direção de texto.</p>
-                    <div class="example">
-                        <p><q>Citação curta</q>, <blockquote>Citação longa de um autor.</blockquote><cite>Autor</cite>, <bdo dir="rtl">Texto invertido</bdo>.</p>
-                    </div>
-                    <pre>
-<p><q>Citação curta</q>, <blockquote>Citação longa de um autor.</blockquote><cite>Autor</cite>, <bdo dir="rtl">Texto invertido</bdo>.</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_q" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Abreviações e Endereços</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><abbr></code> para abreviações e <code><address></code> para informações de contato.</p>
-                    <div class="example">
-                        <p>A <abbr title="Organização das Nações Unidas">ONU</abbr> é uma organização global.<br>
-                        <address>Rua Exemplo, 123, SP, Brasil</address></p>
-                    </div>
-                    <pre>
-<p>A <abbr title="Organização das Nações Unidas">ONU</abbr> é uma organização global.<br>
-<address>Rua Exemplo, 123, SP, Brasil</address></p>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_abbr" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Code Formatting -->
-            <h3 class="category-title mb-4">Formatação de Código</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Código e Entrada de Teclado</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><code></code>, <code><kbd></code>, <code><samp></code>, <code><var></code>, <code><pre></code> para código e entrada.</p>
-                    <div class="example">
-                        <p>Comando: <kbd>Ctrl + S</kbd>, código: <code>x = 10;</code>, saída: <samp>Erro 404</samp>, variável: <var>x</var>.</p>
-                        <pre>Texto pré-formatado com <pre>.</pre>
-                    </div>
-                    <pre>
-<p>Comando: <kbd>Ctrl + S</kbd>, código: <code>x = 10;</code>, saída: <samp>Erro 404</samp>, variável: <var>x</var>.</p>
-<pre>Texto pré-formatado com <pre>.</pre>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_code" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Forms -->
-            <h3 class="category-title mb-4">Formulários</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Campos de Entrada</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><form></code>, <code><input></code>, <code><textarea></code>, <code><button></code> para criar formulários.</p>
-                    <div class="example">
-                        <form class="form-example">
-                            <div class="mb-3">
-                                <label for="nome" class="form-label">Nome:</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
-                            </div>
-                            <div class="mb-3">
-                                <label for="mensagem" class="form-label">Mensagem:</label>
-                                <textarea class="form-control" id="mensagem" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary custom-btn">Enviar</button>
-                        </form>
-                    </div>
-                    <pre>
-<form>
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" placeholder="Digite seu nome">
-    <label for="mensagem">Mensagem:</label>
-    <textarea id="mensagem" rows="3"></textarea>
-    <button type="submit">Enviar</button>
-</form>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Lista Suspensa e Datalist</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><select></code> e <code><datalist></code> para opções de seleção.</p>
-                    <div class="example">
-                        <select class="form-select mb-3">
-                            <option>Opção 1</option>
-                            <option>Opção 2</option>
-                        </select>
-                        <input class="form-control" list="sugestoes">
-                        <datalist id="sugestoes">
-                            <option value="Sugestão 1">
-                            <option value="Sugestão 2">
-                        </datalist>
-                    </div>
-                    <pre>
-<select>
-    <option>Opção 1</option>
-    <option>Opção 2</option>
-</select>
-<input list="sugestoes">
-<datalist id="sugestoes">
-    <option value="Sugestão 1">
-    <option value="Sugestão 2">
-</datalist>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_select" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Saída de Formulário</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><output></code> para exibir resultados de cálculos.</p>
-                    <div class="example">
-                        <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
-                            <input type="number" id="a" value="50"> + 
-                            <input type="number" id="b" value="50"> = 
-                            <output name="x" for="a b">100</output>
-                        </form>
-                    </div>
-                    <pre>
-<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
-    <input type="number" id="a" value="50"> + 
-    <input type="number" id="b" value="50"> = 
-    <output name="x" for="a b">100</output>
-</form>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_output" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Structural Elements -->
-            <h3 class="category-title mb-4">Elementos Estruturais</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Artigo e Cabeçalho</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><article></code>, <code><header></code>, <code><footer></code> para estrutura semântica.</p>
-                    <div class="example semantic-example">
-                        <article>
-                            <header>
-                                <h4>Artigo Exemplo</h4>
-                                <p>Por Alysson, 14 de Julho de 2025</p>
-                            </header>
-                            <p>Conteúdo do artigo.</p>
-                            <footer>Contato: exemplo@email.com</footer>
-                        </article>
-                    </div>
-                    <pre>
-<article>
     <header>
-        <h4>Artigo Exemplo</h4>
-        <p>Por Alysson, 14 de Julho de 2025</p>
+        <div class="container">
+            <h1>Resumo W3Schools</h1>
+            <p>Guia completo de HTML, CSS e JavaScript com exemplos visuais</p>
+        </div>
     </header>
-    <p>Conteúdo do artigo.</p>
-    <footer>Contato: exemplo@email.com</footer>
-</article>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_article" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+
+    <nav class="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="#html">HTML</a></li>
+                <li><a href="#css">CSS</a></li>
+                <li><a href="#javascript">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Seção HTML -->
+        <section id="html" class="section">
+            <h2>HTML - Linguagem de Marcação</h2>
+            <p>HTML (HyperText Markup Language) é a linguagem padrão para criar páginas web. Ele descreve a estrutura de uma página web usando elementos.</p>
+            
+            <div class="example-container">
+                <h3>Exemplo Básico de HTML</h3>
+                <div class="code-example">
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Minha Primeira Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Bem-vindo ao HTML!&lt;/h1&gt;
+    &lt;p&gt;Este é um parágrafo de exemplo.&lt;/p&gt;
+    &lt;a href="https://www.w3schools.com"&gt;Visite o W3Schools&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
                 </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Navegação</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><nav></code> para menus de navegação.</p>
-                    <div class="example">
-                        <nav class="nav nav-pills justify-content-center custom-nav">
-                            <a class="nav-link" href="#">Início</a>
-                            <a class="nav-link" href="#">Sobre</a>
-                            <a class="nav-link" href="#">Contato</a>
-                        </nav>
+                <div class="visual-result">
+                    <h4>Resultado Visual:</h4>
+                    <div class="demo-box">
+                        <h1 style="color: #333; margin: 10px 0;">Bem-vindo ao HTML!</h1>
+                        <p style="margin: 10px 0;">Este é um parágrafo de exemplo.</p>
+                        <a href="https://www.w3schools.com" style="color: #007bff; text-decoration: underline;">Visite o W3Schools</a>
                     </div>
-                    <pre>
-<nav>
-    <a href="#">Início</a>
-    <a href="#">Sobre</a>
-    <a href="#">Contato</a>
-</nav>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_nav" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
                 </div>
             </div>
 
-            <!-- Multimedia -->
-            <h3 class="category-title mb-4">Multimídia</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Imagem e Figura</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><img></code> e <code><figure></code> para imagens com legendas.</p>
-                    <div class="example">
-                        <figure class="figure">
-                            <img src="https://via.placeholder.com/300" class="figure-img img-fluid rounded custom-img" alt="Imagem de Exemplo">
-                            <figcaption class="figure-caption">Imagem com legenda.</figcaption>
-                        </figure>
+            <div class="elements-grid">
+                <h3>Elementos HTML Principais</h3>
+                <div class="grid">
+                    <div class="element-card">
+                        <h4>&lt;h1&gt; - &lt;h6&gt;</h4>
+                        <p>Títulos de diferentes níveis</p>
+                        <div class="demo">
+                            <h1 style="font-size: 1.5em; margin: 5px 0;">Título H1</h1>
+                            <h3 style="font-size: 1.2em; margin: 5px 0;">Título H3</h3>
+                        </div>
                     </div>
-                    <pre>
-<figure>
-    <img src="https://via.placeholder.com/300" alt="Imagem de Exemplo">
-    <figcaption>Imagem com legenda.</figcaption>
-</figure>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_img" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Vídeo</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><video></code> para incorporar vídeos.</p>
-                    <div class="example">
-                        <video controls class="img-fluid rounded custom-video">
-                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos.
-                        </video>
+                    <div class="element-card">
+                        <h4>&lt;p&gt;</h4>
+                        <p>Parágrafos de texto</p>
+                        <div class="demo">
+                            <p style="margin: 5px 0;">Este é um parágrafo.</p>
+                        </div>
                     </div>
-                    <pre>
-<video controls>
-    <source src="mov_bbb.mp4" type="video/mp4">
-    Seu navegador não suporta vídeos.
-</video>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_video" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Tables -->
-            <h3 class="category-title mb-4">Tabelas</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Tabela de Dados</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><table></code>, <code><thead></code>, <code><tbody></code> para organizar dados.</p>
-                    <div class="example">
-                        <table class="table table-bordered table-hover custom-table">
-                            <thead class="table-primary">
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Idade</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Alysson</td>
-                                    <td>25</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="element-card">
+                        <h4>&lt;img&gt;</h4>
+                        <p>Inserir imagens</p>
+                        <div class="demo">
+                            <div style="width: 50px; height: 30px; background: #ddd; border: 1px solid #999; display: flex; align-items: center; justify-content: center; font-size: 10px;">IMG</div>
+                        </div>
                     </div>
-                    <pre>
-<table>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Idade</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Alysson</td>
-            <td>25</td>
-        </tr>
-    </tbody>
-</table>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Links and Metadata -->
-            <h3 class="category-title mb-4">Links e Metadados</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Links</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><a></code> para criar hiperlinks, com atributo <span data-bs-toggle="tooltip" title="Especifica o URL de destino">href</span>.</p>
-                    <div class="example">
-                        <a href="https://www.w3schools.com" target="_blank">Visite W3Schools</a>
+                    <div class="element-card">
+                        <h4>&lt;div&gt;</h4>
+                        <p>Contêiner genérico</p>
+                        <div class="demo">
+                            <div style="border: 2px dashed #999; padding: 10px; font-size: 12px;">Div Container</div>
+                        </div>
                     </div>
-                    <pre>
-<a href="https://www.w3schools.com">Visite W3Schools</a>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Metadados</h3>
-                </div>
-                <div class="card-body">
-                    <p>Usa <code><meta></code>, <code><link></code>, <code><base></code> para informações do documento.</p>
-                    <div class="example">
-                        <p>Metadados estão no <code><head></code> e não são visíveis.</p>
-                    </div>
-                    <pre>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <base href="https://www.w3schools.com/">
-</head>
-                    </pre>
-                    <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_head_meta" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
                 </div>
             </div>
         </section>
 
-        <!-- CSS Examples Section -->
-        <section id="css-examples" class="mb-5">
-            <h2 class="text-center mb-4 section-title"><i class="fab fa-css3-alt me-2"></i>Exemplos de CSS</h2>
-            <p class="text-center mb-5 section-subtitle">Demonstrações práticas de propriedades CSS com explicações resumidas.</p>
-
-            <!-- Typography -->
-            <h3 class="category-title mb-4"><i class="fas fa-text-height me-2"></i>Tipografia</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>font-family</h3>
-                </div>
-                <div class="card-body">
-                    <p>Define a fonte do texto, como <span data-bs-toggle="tooltip" title="Especifica a família de fontes">font-family</span>.</p>
-                    <div class="example demo-font-family">
-                        <p>Texto em Arial</p>
-                    </div>
-                    <pre>
-<p style="font-family: Arial, sans-serif;">Texto em Arial</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_font-family" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>font-size</h3>
-                </div>
-                <div class="card-body">
-                    <p>Define o tamanho do texto.</p>
-                    <div class="example demo-font-size">
-                        <p>Texto de 20px</p>
-                    </div>
-                    <pre>
-<p style="font-size: 20px;">Texto de 20px</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_font-size" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>font-weight</h3>
-                </div>
-                <div class="card-body">
-                    <p>Controla a espessura da fonte.</p>
-                    <div class="example demo-font-weight">
-                        <p>Texto em negrito</p>
-                    </div>
-                    <pre>
-<p style="font-weight: bold;">Texto em negrito</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_font-weight" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>text-align</h3>
-                </div>
-                <div class="card-body">
-                    <p>Alinha o texto horizontalmente.</p>
-                    <div class="example demo-text-align">
-                        <p>Texto centralizado</p>
-                    </div>
-                    <pre>
-<p style="text-align: center;">Texto centralizado</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_text-align" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>text-decoration</h3>
-                </div>
-                <div class="card-body">
-                    <p>Adiciona decoração ao texto, como sublinhado.</p>
-                    <div class="example demo-text-decoration">
-                        <p>Texto sublinhado</p>
-                    </div>
-                    <pre>
-<p style="text-decoration: underline;">Texto sublinhado</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_text-decoration" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>text-shadow</h3>
-                </div>
-                <div class="card-body">
-                    <p>Adiciona sombra ao texto.</p>
-                    <div class="example demo-text-shadow">
-                        <p>Texto com sombra</p>
-                    </div>
-                    <pre>
-<p style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Texto com sombra</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_text-shadow" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Box Model -->
-            <h3 class="category-title mb-4"><i class="fas fa-box me-2"></i>Modelo de Caixa</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>padding</h3>
-                </div>
-                <div class="card-body">
-                    <p>Define o espaço interno de um elemento.</p>
-                    <div class="example demo-padding">
-                        <p>Elemento com padding</p>
-                    </div>
-                    <pre>
-<p style="padding: 20px; background-color: #e0f7fa;">Elemento com padding</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_padding" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>margin</h3>
-                </div>
-                <div class="card-body">
-                    <p>Define o espaço externo de um elemento.</p>
-                    <div class="example demo-margin">
-                        <p>Elemento com margem</p>
-                    </div>
-                    <pre>
-<p style="margin: 20px; background-color: #b2ebf2;">Elemento com margem</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_margin" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>border</h3>
-                </div>
-                <div class="card-body">
-                    <p>Define a borda de um elemento.</p>
-                    <div class="example demo-border">
-                        <p>Elemento com borda</p>
-                    </div>
-                    <pre>
-<p style="border: 3px solid #007bff;">Elemento com borda</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_border" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>box-shadow</h3>
-                </div>
-                <div class="card-body">
-                    <p>Adiciona sombra ao elemento.</p>
-                    <div class="example demo-box-shadow">
-                        <p>Elemento com sombra</p>
-                    </div>
-                    <pre>
-<p style="box-shadow: 0 4px 8px rgba(0,0,0,0.2);">Elemento com sombra</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_box-shadow" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Layout -->
-            <h3 class="category-title mb-4"><i class="fas fa-th me-2"></i>Layout</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>display</h3>
-                </div>
-                <div class="card-body">
-                    <p>Controla o tipo de exibição do elemento (block, inline, etc.).</p>
-                    <div class="example demo-display">
-                        <span style="display: inline-block; background-color: #fce4ec;">Inline-block</span>
-                        <span style="display: inline-block; background-color: #fce4ec;">Outro elemento</span>
-                    </div>
-                    <pre>
-<span style="display: inline-block; background-color: #fce4ec;">Inline-block</span>
-<span style="display: inline-block; background-color: #fce4ec;">Outro elemento</span>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_display" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>float</h3>
-                </div>
-                <div class="card-body">
-                    <p>Posiciona o elemento à esquerda ou direita, permitindo que outros elementos fluam ao redor.</p>
-                    <div class="example demo-float">
-                        <div style="float: left; width: 100px; background-color: #dcedc8;">Flutuar à esquerda</div>
-                        <p>Texto ao lado do elemento flutuante.</p>
-                    </div>
-                    <pre>
-<div style="float: left; width: 100px; background-color: #dcedc8;">Flutuar à esquerda</div>
-<p>Texto ao lado do elemento flutuante.</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_float" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Colors and Backgrounds -->
-            <h3 class="category-title mb-4"><i class="fas fa-palette me-2"></i>Cores e Fundos</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>color</h3>
-                </div>
-                <div class="card-body">
-                    <p>Define a cor do texto.</p>
-                    <div class="example demo-color">
-                        <p>Texto vermelho</p>
-                    </div>
-                    <pre>
-<p style="color: #d81b60;">Texto vermelho</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_color" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>background</h3>
-                </div>
-                <div class="card-body">
-                    <p>Define a cor ou imagem de fundo.</p>
-                    <div class="example demo-background">
-                        <p>Elemento com fundo gradiente</p>
-                    </div>
-                    <pre>
-<p style="background: linear-gradient(to right, #4fc3f7, #0288d1);">Elemento com fundo gradiente</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_background" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>opacity</h3>
-                </div>
-                <div class="card-body">
-                    <p>Controla a transparência do elemento.</p>
-                    <div class="example demo-opacity">
-                        <p>Elemento com 50% de opacidade</p>
-                    </div>
-                    <pre>
-<p style="opacity: 0.5; background-color: #ab47bc;">Elemento com 50% de opacidade</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_opacity" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Animations -->
-            <h3 class="category-title mb-4"><i class="fas fa-film me-2"></i>Animações e Transições</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>transition</h3>
-                </div>
-                <div class="card-body">
-                    <p>Suaviza mudanças de propriedades CSS, como <span data-bs-toggle="tooltip" title="Define a duração da transição">transition-duration</span>.</p>
-                    <div class="example demo-transition">
-                        <div>Passe o mouse para mudar a cor</div>
-                    </div>
-                    <pre>
-<style>
-.demo-transition div {
-    background-color: #3498db;
-    padding: 10px;
-    transition: background-color 0.3s ease;
+        <!-- Seção CSS -->
+        <section id="css" class="section">
+            <h2>CSS - Folhas de Estilo</h2>
+            <p>CSS (Cascading Style Sheets) é a linguagem usada para estilizar documentos HTML. Ele controla a aparência e o layout dos elementos.</p>
+            
+            <div class="example-container">
+                <h3>Exemplo de CSS</h3>
+                <div class="code-example">
+                    <pre><code>body {
+    background-color: lightblue;
+    font-family: Arial, sans-serif;
 }
-.demo-transition div:hover {
-    background-color: #e74c3c;
-}
-</style>
-<div>Passe o mouse para mudar a cor</div>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss3_transition" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>animation</h3>
-                </div>
-                <div class="card-body">
-                    <p>Cria animações com <code>@keyframes</code>.</p>
-                    <div class="example demo-animation">
-                        <div>Elemento animado</div>
-                    </div>
-                    <pre>
-<style>
-.demo-animation div {
-    width: 100px;
-    height: 100px;
-    background-color: #2ecc71;
-    animation: pulse 2s infinite;
-}
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-</style>
-<div>Elemento animado</div>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss3_animation" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>transform</h3>
-                </div>
-                <div class="card-body">
-                    <p>Modifica a aparência do elemento (escala, rotação, etc.).</p>
-                    <div class="example demo-transform">
-                        <div>Passe o mouse para girar</div>
-                    </div>
-                    <pre>
-<style>
-.demo-transform div {
-    width: 100px;
-    height: 100px;
-    background-color: #9b59b6;
-    transition: transform 0.5s ease;
-}
-.demo-transform div:hover {
-    transform: rotate(45deg);
-}
-</style>
-<div>Passe o mouse para girar</div>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss3_transform" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
 
-            <!-- Positioning -->
-            <h3 class="category-title mb-4"><i class="fas fa-arrows-alt me-2"></i>Posicionamento</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>position: relative</h3>
-                </div>
-                <div class="card-body">
-                    <p>Posiciona o elemento em relação à sua posição original.</p>
-                    <div class="example demo-position-relative">
-                        <div>Elemento relativo</div>
-                    </div>
-                    <pre>
-<div style="position: relative; top: 20px; left: 20px; background-color: #ffccbc;">Elemento relativo</div>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_position_relative" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>position: absolute</h3>
-                </div>
-                <div class="card-body">
-                    <p>Posiciona o elemento em relação ao ancestral posicionado mais próximo.</p>
-                    <div class="example demo-position-absolute" style="position: relative; height: 100px;">
-                        <div>Elemento absoluto</div>
-                    </div>
-                    <pre>
-<div style="position: relative;">
-    <div style="position: absolute; top: 20px; right: 20px; background-color: #ff8a65;">Elemento absoluto</div>
-</div>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_position_absolute" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>z-index</h3>
-                </div>
-                <div class="card-body">
-                    <p>Controla a ordem de empilhamento de elementos.</p>
-                    <div class="example demo-z-index" style="position: relative;">
-                        <div style="z-index: 2;">Z-index 2</div>
-                        <div style="z-index: 1;">Z-index 1</div>
-                    </div>
-                    <pre>
-<div style="position: relative;">
-    <div style="position: absolute; z-index: 2; background-color: #3498db;">Z-index 2</div>
-    <div style="position: absolute; top: 20px; left: 20px; z-index: 1; background-color: #e74c3c;">Z-index 1</div>
-</div>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_zindex" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Pseudo-classes/Elements -->
-            <h3 class="category-title mb-4"><i class="fas fa-code me-2"></i>Pseudo-classes e Elementos</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>:hover</h3>
-                </div>
-                <div class="card-body">
-                    <p>Estiliza um elemento quando o mouse passa sobre ele.</p>
-                    <div class="example demo-hover">
-                        <p>Passe o mouse</p>
-                    </div>
-                    <pre>
-<style>
-.demo-hover p:hover {
-    background-color: #ff5722;
+h1 {
     color: white;
+    text-align: center;
+    background-color: #333;
+    padding: 20px;
 }
-</style>
-<p>Passe o mouse</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_pseudo_class" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>::before e ::after</h3>
-                </div>
-                <div class="card-body">
-                    <p>Adiciona conteúdo antes ou depois do elemento.</p>
-                    <div class="example demo-pseudo-elements">
-                        <p>Conteúdo com ícones</p>
-                    </div>
-                    <pre>
-<style>
-.demo-pseudo-elements p::before {
-    content: "★ ";
-    color: #fbc02d;
-}
-.demo-pseudo-elements p::after {
-    content: " ✔";
-    color: #4caf50;
-}
-</style>
-<p>Conteúdo com ícones</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_pseudo_element" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
 
-            <!-- Flexbox -->
-            <h3 class="category-title mb-4"><i class="fas fa-th-large me-2"></i>Flexbox</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>flex</h3>
-                </div>
-                <div class="card-body">
-                    <p>Cria layouts flexíveis com <code>display: flex</code>.</p>
-                    <div class="example demo-flex">
-                        <div class="flex-item">Item 1</div>
-                        <div class="flex-item">Item 2</div>
-                        <div class="flex-item">Item 3</div>
-                    </div>
-                    <pre>
-<style>
-.demo-flex {
-    display: flex;
-    gap: 10px;
-}
-.demo-flex .flex-item {
-    background-color: #3498db;
-    padding: 10px;
-    color: white;
-}
-</style>
-<div class="demo-flex">
-    <div class="flex-item">Item 1</div>
-    <div class="flex-item">Item 2</div>
-    <div class="flex-item">Item 3</div>
-</div>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Grid -->
-            <h3 class="category-title mb-4"><i class="fas fa-th me-2"></i>Grid</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>grid</h3>
-                </div>
-                <div class="card-body">
-                    <p>Cria layouts em grade com <code>display: grid</code>.</p>
-                    <div class="example demo-grid">
-                        <div class="grid-item">Item 1</div>
-                        <div class="grid-item">Item 2</div>
-                        <div class="grid-item">Item 3</div>
-                    </div>
-                    <pre>
-<style>
-.demo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-.demo-grid .grid-item {
-    background-color: #e74c3c;
-    padding: 10px;
-    color: white;
-}
-</style>
-<div class="demo-grid">
-    <div class="grid-item">Item 1</div>
-    <div class="grid-item">Item 2</div>
-    <div class="grid-item">Item 3</div>
-</div>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_grid" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
-                </div>
-            </div>
-
-            <!-- Responsive Design -->
-            <h3 class="category-title mb-4"><i class="fas fa-mobile-alt me-2"></i>Design Responsivo</h3>
-            <div class="card mb-4 animate-card">
-                <div class="card-header">
-                    <h3>Media Queries</h3>
-                </div>
-                <div class="card-body">
-                    <p>Adapta o layout para diferentes tamanhos de tela.</p>
-                    <div class="example demo-media-query">
-                        <p>Este texto muda de cor em telas menores.</p>
-                    </div>
-                    <pre>
-<style>
-.demo-media-query p {
+p {
+    font-size: 18px;
     color: #333;
-}
-@media (max-width: 600px) {
-    .demo-media-query p {
-        color: #e74c3c;
-    }
-}
-</style>
-<p>Este texto muda de cor em telas menores.</p>
-                    </pre>
-                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss3_mediaqueries" target="_blank" class="btn btn-primary custom-btn">Experimente Você Mesmo</a>
+    margin: 15px 0;
+}</code></pre>
+                </div>
+                <div class="visual-result">
+                    <h4>Resultado Visual:</h4>
+                    <div class="demo-box" style="background-color: lightblue; padding: 15px;">
+                        <h1 style="color: white; text-align: center; background-color: #333; padding: 20px; margin: 0 0 15px 0;">Título Estilizado</h1>
+                        <p style="font-size: 18px; color: #333; margin: 15px 0;">Este parágrafo foi estilizado com CSS.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="css-properties">
+                <h3>Propriedades CSS Essenciais</h3>
+                <div class="properties-grid">
+                    <div class="property-demo">
+                        <h4>Cores</h4>
+                        <div class="demo-item">
+                            <code>color: red;</code>
+                            <span style="color: red;">Texto vermelho</span>
+                        </div>
+                        <div class="demo-item">
+                            <code>background-color: yellow;</code>
+                            <span style="background-color: yellow; padding: 2px 5px;">Fundo amarelo</span>
+                        </div>
+                    </div>
+                    <div class="property-demo">
+                        <h4>Texto</h4>
+                        <div class="demo-item">
+                            <code>font-size: 20px;</code>
+                            <span style="font-size: 20px;">Texto grande</span>
+                        </div>
+                        <div class="demo-item">
+                            <code>text-align: center;</code>
+                            <div style="text-align: center; border: 1px solid #ddd; padding: 5px;">Centralizado</div>
+                        </div>
+                    </div>
+                    <div class="property-demo">
+                        <h4>Espaçamento</h4>
+                        <div class="demo-item">
+                            <code>margin: 10px;</code>
+                            <div style="background: #f0f0f0; margin: 10px; padding: 5px; border: 1px solid #ddd;">Com margem</div>
+                        </div>
+                        <div class="demo-item">
+                            <code>padding: 15px;</code>
+                            <div style="background: #e0e0e0; padding: 15px; border: 1px solid #ddd;">Com padding</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>Demonstração Interativa</h3>
+                <p>Passe o mouse sobre os elementos abaixo:</p>
+                <div class="hover-examples">
+                    <button class="hover-btn">Botão com Hover</button>
+                    <div class="hover-card">
+                        <h4>Card Interativo</h4>
+                        <p>Este card muda ao passar o mouse</p>
+                    </div>
                 </div>
             </div>
         </section>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-        // Initialize Bootstrap tooltips
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-    </script>
+
+        <!-- Seção JavaScript -->
+        <section id="javascript" class="section">
+            <h2>JavaScript - Programação Web</h2>
+            <p>JavaScript é a linguagem de programação da web. Permite adicionar interatividade e comportamento dinâmico às páginas.</p>
+            
+            <div class="example-container">
+                <h3>Exemplo Básico de JavaScript</h3>
+                <div class="code-example">
+                    <pre><code>// Variáveis
+let nome = "João";
+const idade = 25;
+
+// Função
+function saudar() {
+    return "Olá, " + nome + "! Você tem " + idade + " anos.";
+}
+
+// Manipulação do DOM
+document.getElementById("resultado").innerHTML = saudar();</code></pre>
+                </div>
+                <div class="visual-result">
+                    <h4>Resultado Visual:</h4>
+                    <div class="demo-box">
+                        <button onclick="exemploBasico()" class="js-btn">Executar Código</button>
+                        <p id="resultado-basico" style="margin-top: 10px; font-weight: bold;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="js-concepts">
+                <h3>Conceitos Fundamentais</h3>
+                <div class="concepts-grid">
+                    <div class="concept-card">
+                        <h4>Variáveis</h4>
+                        <code>let x = 10;<br>const y = "texto";<br>var z = true;</code>
+                        <button onclick="exemploVariaveis()" class="mini-btn">Testar</button>
+                        <div id="demo-variaveis"></div>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Funções</h4>
+                        <code>function somar(a, b) {<br>&nbsp;&nbsp;return a + b;<br>}</code>
+                        <button onclick="exemploFuncoes()" class="mini-btn">Testar</button>
+                        <div id="demo-funcoes"></div>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Eventos</h4>
+                        <code>onclick="minhaFuncao()"<br>onmouseover="..."<br>onload="..."</code>
+                        <button onclick="exemploEventos()" class="mini-btn">Testar</button>
+                        <div id="demo-eventos"></div>
+                    </div>
+                    <div class="concept-card">
+                        <h4>DOM</h4>
+                        <code>document.getElementById()<br>innerHTML<br>style.color</code>
+                        <button onclick="exemploDOM()" class="mini-btn">Testar</button>
+                        <div id="demo-dom"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-examples">
+                <h3>Exemplos Interativos</h3>
+                <div class="examples-grid">
+                    <div class="example-box">
+                        <h4>Calculadora Simples</h4>
+                        <input type="number" id="num1" placeholder="Número 1" style="width: 80px; margin: 5px;">
+                        <select id="operacao" style="margin: 5px;">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">×</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="number" id="num2" placeholder="Número 2" style="width: 80px; margin: 5px;">
+                        <button onclick="calcular()" class="calc-btn">=</button>
+                        <div id="resultado-calc" style="margin-top: 10px; font-weight: bold;"></div>
+                    </div>
+                    <div class="example-box">
+                        <h4>Mudança de Cores</h4>
+                        <div id="caixa-cor" style="width: 100px; height: 100px; background-color: #3498db; margin: 10px auto; border-radius: 10px; transition: all 0.3s;"></div>
+                        <button onclick="mudarCor()" class="color-btn">Mudar Cor</button>
+                    </div>
+                    <div class="example-box">
+                        <h4>Lista Dinâmica</h4>
+                        <input type="text" id="item-input" placeholder="Adicionar item" style="width: 120px; margin: 5px;">
+                        <button onclick="adicionarItem()" class="add-btn">Adicionar</button>
+                        <ul id="lista-dinamica" style="text-align: left; margin-top: 10px;"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - Resumo baseado no conteúdo do W3Schools.com</p>
+            <p>Criado para fins educacionais</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
